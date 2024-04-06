@@ -3,9 +3,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShelterModule } from './shelter/shelter.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [ShelterModule, MongooseModule.forRoot('mongodb+srv://vinylacerda:19809762@cluster-0.usoqgqv.mongodb.net/picles?retryWrites=true&w=majority&appName=Cluster-0')],
+  imports: [
+    ConfigModule.forRoot(),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => ({
+        uri: config.get<string>('DB_CONNECTION_STRING'),
+      }),
+    }),
+    ShelterModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
