@@ -24,7 +24,7 @@ import UpdateShelterDetailsUseCase from './usecases/update.shelter.details.useca
       useClass: ShelterRepository,
     },
     {
-      provide: ShelterTokens.UpdateShelterDetailsUseCase,
+      provide: ShelterTokens.updateShelterDetailsUseCase,
       useClass: UpdateShelterDetailsUseCase,
     }
   ],

@@ -13,7 +13,7 @@ export class ShelterController {
     @Inject(ShelterTokens.getShelterDetailsUseCase)
     private readonly getShelterDetailsUseCase: IUseCase<null, GetShelterDetailsUseCaseOutput>
 
-    @Inject(ShelterTokens.getShelterDetailsUseCase)
+    @Inject(ShelterTokens.updateShelterDetailsUseCase)
     private readonly updateShelterDetailsUseCase: IUseCase<UpdateShelterDetailsUseCaseInput, UpdateShelterDetailsUseCaseOutput>
 
     @Get()
@@ -22,7 +22,7 @@ export class ShelterController {
     }
 
     @Put()
-    async updateShelterDetails(@Body() input: UpdateShelterControllerInput): Promise<UpdateShelterDetailsUseCaseOutput> {
+    async updateShelterDetails(@Body() input: UpdateShelterControllerInput): Promise<UpdateShelterDetailsUseCaseInput> {
         const useCaseInput = new UpdateShelterDetailsUseCaseInput({ ...input });
         return await this.updateShelterDetailsUseCase.run(useCaseInput);
     }
