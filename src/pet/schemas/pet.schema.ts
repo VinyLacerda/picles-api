@@ -39,6 +39,7 @@ export class Pet {
     @Prop({ required: true })
     updatedAt: Date;
 
+
 }
 
 export const PetSchema = SchemaFactory.createForClass(Pet);
