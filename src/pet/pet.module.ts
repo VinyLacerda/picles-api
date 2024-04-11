@@ -7,6 +7,7 @@ import GetPetByIdUseCase from "./usecases/get.pet.by.id.usecase";
 import PetRepository from "./pet.repository";
 import CreatePetUseCase from "./usecases/create.pet.usecase";
 import UpdatePetByIdUseCase from "./usecases/update.by.id.usecase";
+import DeletePetByIdUseCase from "./usecases/delete.pet.by.id.usecase";
 
 
 
@@ -34,6 +35,10 @@ import UpdatePetByIdUseCase from "./usecases/update.by.id.usecase";
       provide: PetTokens.updatePetUseCase,
       useClass: UpdatePetByIdUseCase
     },
+    {
+      provide: PetTokens.deletePetUseCase,
+      useClass: DeletePetByIdUseCase
+    }
   ]
 })
 export class PetModule { }

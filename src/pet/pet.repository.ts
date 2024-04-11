@@ -3,6 +3,7 @@ import IPetRepository from "./interface/pet.repository.interface";
 import { Injectable } from "@nestjs/common";
 import { Pet } from "./schemas/pet.schema";
 import { Model } from "mongoose";
+import DeletePetByIdUseCase from "./usecases/delete.pet.by.id.usecase";
 
 
 @Injectable()
@@ -32,6 +33,10 @@ export default class PetRepository implements IPetRepository {
             ...data,
             updatedAt: new Date()
         })
+    }
+
+    async deletePetById(id: string): Promise<Pet> {
+        return await this.petModel.findByIdAndDelete(id)
     }
 
 }
