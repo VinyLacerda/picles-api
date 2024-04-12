@@ -9,6 +9,7 @@ export default class PetTokens {
     static updatePetUseCase = 'updatePetUseCase';
     static deletePetUseCase = 'deletePetUseCase';
     static updatePetPhotoByIdUseCase = 'updatePetPhotoByIdUseCase';
+    static getPetsUseCase = 'getPetsUseCase';
 
     //static são funções utilitarias usada parar clonar funções para clonar objetos, são chamada na propria classe.
 }
