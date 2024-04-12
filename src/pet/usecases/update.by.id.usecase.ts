@@ -6,12 +6,14 @@ import { Inject } from "@nestjs/common";
 import PetTokens from "../pet.tokens";
 import IPetRepository from "../interface/pet.repository.interface";
 import { Pet } from "../schemas/pet.schema";
+import IFileService from "src/interfaces/file.service.interface";
+import AppTokens from "src/app.tokens";
 
 export default class UpdatePetByIdUseCase implements IUseCase<UpdatePetByIdUseCaseInput, UpdatePetByIdUseCaseOutput> {
 
     constructor(
         @Inject(PetTokens.petRepository)
-        private readonly petRepository: IPetRepository
+        private readonly petRepository: IPetRepository,
     ) { }
 
     async run(input: UpdatePetByIdUseCaseInput): Promise<UpdatePetByIdUseCaseOutput> {
@@ -50,7 +52,4 @@ export default class UpdatePetByIdUseCase implements IUseCase<UpdatePetByIdUseCa
             return null
         }
     }
-
-
-
 }

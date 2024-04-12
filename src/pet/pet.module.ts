@@ -8,6 +8,9 @@ import PetRepository from "./pet.repository";
 import CreatePetUseCase from "./usecases/create.pet.usecase";
 import UpdatePetByIdUseCase from "./usecases/update.by.id.usecase";
 import DeletePetByIdUseCase from "./usecases/delete.pet.by.id.usecase";
+import UpdatePetPhotoByIdUseCase from "./usecases/update.pet.photo.by.id.usecase";
+import FileService from "src/file.service";
+import AppTokens from "src/app.tokens";
 
 
 
@@ -38,6 +41,16 @@ import DeletePetByIdUseCase from "./usecases/delete.pet.by.id.usecase";
     {
       provide: PetTokens.deletePetUseCase,
       useClass: DeletePetByIdUseCase
+    },
+
+    {
+      provide: PetTokens.updatePetPhotoByIdUseCase,
+      useClass: UpdatePetPhotoByIdUseCase
+    },
+
+    {
+      provide: AppTokens.fileService,
+      useClass: FileService
     }
   ]
 })
